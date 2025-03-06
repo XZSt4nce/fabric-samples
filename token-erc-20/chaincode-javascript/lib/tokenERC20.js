@@ -448,7 +448,7 @@ class TokenERC20Contract extends Contract {
         await this.CheckInitialized(ctx);
 
         // Get ID of submitting client identity
-        const clientAccountID = ctx.clientIdentity.getID();
+        const clientAccountID = await ClientAccountID(ctx);
 
         const balanceKey = ctx.stub.createCompositeKey(balancePrefix, [clientAccountID]);
         const balanceBytes = await ctx.stub.getState(balanceKey);
